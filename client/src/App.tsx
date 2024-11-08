@@ -1,13 +1,13 @@
 import { Outlet, ScrollRestoration } from "react-router-dom"
+import Navbar from "./components/layout/navbar"
 
 function App() {
   return (
     <>
       <ScrollRestoration />
-      <main className="h-screen bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark">
-        <div className="w-full flex flex-col items-center justify-start px-8">
-          <Outlet />
-        </div>
+      <Navbar />
+      <main className="w-full flex-grow">
+        <Outlet />
       </main>
     </>
   )

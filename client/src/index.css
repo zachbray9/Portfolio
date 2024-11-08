@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+  html {
+    scroll-behavior: smooth;
+  }
+
+  #root {
+    @apply min-h-screen
+  }
+  
+  body {
+    @apply 
+    mx-auto
+    px-8
+    max-w-3xl
+    flex
+    flex-col
+    bg-bg-light 
+    dark:bg-bg-dark 
+    text-text-light 
+    dark:text-text-dark
+  }
+
+  h1 {
+      @apply text-5xl
+  }
+
+  h2{
+      @apply text-4xl
+  }
+
+  h3 {
+      @apply text-3xl
+  }
+
+  h4 {
+      @apply text-2xl
+    }
+    h5 {
+      @apply text-xl
+    }
+    h6 {
+      @apply text-lg
+    }
+}

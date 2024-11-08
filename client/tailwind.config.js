@@ -9,8 +9,14 @@ export default {
       colors: {
         'bg-light': '#f5f5f5',
         'bg-dark': '#18191a',
-        'text-light': '#333333',
-        'text-dark': '#ffffff'
+        text: {
+          light: '#333333',
+          dark: '#ffffff'
+        },
+        muted: {
+          DEFAULT: '#6B7280',
+          dark: '#A1A1AA'
+        }
       }
     },
   },
