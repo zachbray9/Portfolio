@@ -1,15 +1,22 @@
-import Education from "../components/sections/education";
-import Hero from "../components/sections/hero";
-import Projects from "../components/sections/projects";
-import Skills from "../components/sections/skills";
+import { Helmet } from "react-helmet-async";
+import EducationSection from "../components/sections/educationSection";
+import HeroSection from "../components/sections/heroSection";
+import ProjectsSection from "../components/sections/projectsSection";
+import SkillsSection from "../components/sections/skillsSection";
 
 export default function Home() {
     return (
-        <div className="h-dvh w-full flex flex-col gap-16">
-            <Hero />
-            <Education />
-            <Skills />
-            <Projects />
-        </div>
+        <>
+            <Helmet>
+                <title>Home - Zach's Portfolio</title>
+            </Helmet>
+
+            <div className="w-full flex flex-col gap-16">
+                <HeroSection />
+                <EducationSection />
+                <SkillsSection />
+                <ProjectsSection />
+            </div>
+        </>
     )
 }

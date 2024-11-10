@@ -1,7 +1,7 @@
 import SkillTag from "../ui/skillTag";
 
 
-export default function Skills() {
+export default function SkillsSection() {
     return (
         <section id="skills" className="w-full flex flex-col items-start justify-center gap-4">
             <h3>Skills</h3>

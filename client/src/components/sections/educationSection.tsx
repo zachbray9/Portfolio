@@ -1,7 +1,7 @@
 import Card from "../common/card";
 import UCFLogo from '../../assets/UCF Logo.png'
 
-export default function Education() {
+export default function EducationSection() {
     return (
         <section id="education" className="w-full flex flex-col gap-4">
             <h3>Education</h3>

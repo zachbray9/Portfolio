@@ -2,14 +2,21 @@ import { FaArrowRight, FaGithub, FaGlobe } from "react-icons/fa6";
 import Card from "../common/card";
 import LinkButton from "../ui/LinkButton";
 import SkillTag from "../ui/skillTag";
+import { NavLink } from "react-router-dom";
 
-export default function Projects() {
+export default function ProjectsSection() {
     return (
         <section id="projects" className="flex flex-col gap-4">
-            <h3>Projects</h3>
+            <div className="flex items-center justify-between">
+                <h3>Featured Projects</h3>
+                <NavLink to='/projects' className='text-muted hover:text-black dark:hover:text-white flex items-center gap-1 transition-colors'>
+                    <p>view more</p>
+                    <FaArrowRight />
+                </NavLink>
+            </div>
 
             <div className="flex flex-col gap-12">
-                <Card className="p-4">
+                <Card className="p-8">
                     <div className="flex flex-col gap-6">
 
                         <h5 className="font-semibold">MyAnimeVault</h5>
@@ -22,7 +29,7 @@ export default function Projects() {
                             <SkillTag label="PostgresSQL" icon={<i className="devicon-postgresql-plain colored"></i>} skillType="backend" />
                         </div>
                         <p>
-                            An interactive website that leverages the AniList API and allows users to explore, rate, and track their favorite anime series. The platform enables registered
+                            An interactive web app that leverages the AniList API and allows users to explore, rate, and track their favorite anime series. The platform enables registered
                             users to curate anime lists and manage their watch progress, providing a seamless interface to organize and enjoy their anime journey.
                         </p>
                         <div className="inline-flex gap-2 justify-start items-center">
@@ -33,7 +40,7 @@ export default function Projects() {
                     </div>
                 </Card>
 
-                <Card className="p-4">
+                <Card className="p-8">
                     <div className="flex flex-col gap-6">
 
                         <h5 className="font-semibold">AgilePro</h5>
@@ -57,25 +64,6 @@ export default function Projects() {
                             <LinkButton href="https://agilepro.azurewebsites.net" label="Live Site" LeftIcon={FaGlobe} />
                         </div>
                         <iframe className="aspect-video max-w-xl" src="https://www.youtube.com/embed/nnRKnhd6yys?si=i1feCKKRJ0X5W7ld" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                    </div>
-                </Card>
-
-                <Card className="p-4">
-                    <div className="flex flex-col gap-6">
-
-                        <h5 className="font-semibold">Project Cybernetica</h5>
-                        <div className="flex flex-wrap gap-2">
-                            <SkillTag label="Unreal Engine" icon={<i className="devicon-unrealengine-original colored"></i>} skillType="testing/deployment" />
-                        </div>
-                        <p>
-                            Project Cybernetica is a 3D first person shooter created in Unreal Engine 5 in which you are a mercenary in an apocalyptic city called Sariya,
-                            a weapons development city. The city suddenly fell off the grid and lost contact with its people. Your goal is to infiltrate the city and discover
-                            what secrets lie within. The project was made with a small development team for my UCF Game Workshop class.
-                        </p>
-                        <div className="inline-flex gap-2 justify-start items-center">
-                            <LinkButton href="https://agilepro.azurewebsites.net" label="Learn More" RightIcon={FaArrowRight} />
-                        </div>
-                        <iframe className="aspect-video max-w-xl" src="https://www.youtube.com/embed/pyLSuHHFSkg?si=qFnhpU-XohLIKAut" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                     </div>
                 </Card>
             </div>
