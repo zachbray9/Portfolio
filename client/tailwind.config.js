@@ -9,6 +9,8 @@ export default {
       colors: {
         'bg-light': '#f5f5f5',
         'bg-dark': '#121212',
+        'secondary': '#e5e5e5',
+        'secondary-dark': '#1e1e1e',
         text: {
           light: '#333333',
           dark: '#ffffff'

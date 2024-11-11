@@ -1,14 +1,16 @@
 import { IconType } from "react-icons"
+import { twMerge } from "tailwind-merge"
 
-interface Props{
+interface Props {
     Icon: IconType
     url: string
+    className?: string
 }
 
-export default function SocialLink({Icon, url}: Props){
+export default function SocialLink({ Icon, url, className = '' }: Props) {
     return (
-        <a href={url} target="_blank" className="text-slate-500 hover:text-black transition-all">
-            <Icon size={24}/>
+        <a href={url} target="_blank" className={twMerge('text-slate-500 hover:text-black transition-colors', className)}>
+            <Icon size={24} />
         </a>
     )
 }

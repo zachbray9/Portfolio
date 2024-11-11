@@ -4,10 +4,10 @@ import UCFLogo from '../../assets/UCF Logo.png'
 export default function EducationSection() {
     return (
         <section id="education" className="w-full flex flex-col gap-4">
-            <h3>Education</h3>
+            <h3 className="font-semibold text-2xl sm:text-3xl">Education</h3>
 
             <Card>
-                <ul className="mx-10 border-l">
+                <ul className="mx-10 border-l dark:border-gray-800">
                     <li className="relative ml-10 py-4 flex flex-col gap-2">
                         <div className="absolute -left-16 top-4 bg-black h-12 w-12 rounded-full flex items-center justify-center">
                             <img src={UCFLogo} />

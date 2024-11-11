@@ -4,7 +4,7 @@ import SkillTag from "../ui/skillTag";
 export default function SkillsSection() {
     return (
         <section id="skills" className="w-full flex flex-col items-start justify-center gap-4">
-            <h3>Skills</h3>
+            <h3 className="font-semibold text-2xl sm:text-3xl">Skills</h3>
             <div className="flex flex-wrap gap-2">
                 <SkillTag label="React.js" icon={<i className="devicon-react-original colored"></i>} skillType="frontend" />
                 <SkillTag label="TypeScript" icon='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' skillType="frontend" />
@@ -20,11 +20,11 @@ export default function SkillsSection() {
                 <SkillTag label="SQL Server" icon={<i className="devicon-microsoftsqlserver-plain"></i>} skillType="backend"/>
                 <SkillTag label="PostgresSQL" icon={<i className="devicon-postgresql-plain colored"></i>} skillType="backend"/>
 
-                <SkillTag label="Microsoft Azure" icon={<i className="devicon-azure-plain colored"></i>} skillType="testing/deployment"/>
-                <SkillTag label="Git" icon={<i className="devicon-git-plain colored"></i>} skillType="testing/deployment"/>
+                <SkillTag label="Microsoft Azure" icon={<i className="devicon-azure-plain colored"></i>} skillType="cloud/version control"/>
+                <SkillTag label="Git" icon={<i className="devicon-git-plain colored"></i>} skillType="cloud/version control"/>
 
-                <SkillTag label="Unity" icon={<i className="devicon-unity-plain colored"></i>} skillType="testing/deployment"/>
-                <SkillTag label="Unreal Engine" icon={<i className="devicon-unrealengine-original colored"></i>} skillType="testing/deployment"/>
+                <SkillTag label="Unity" icon={<i className="devicon-unity-plain colored"></i>} skillType="other"/>
+                <SkillTag label="Unreal Engine" icon={<i className="devicon-unrealengine-original colored"></i>} skillType="other"/>
             </div>
         </section>
     )
