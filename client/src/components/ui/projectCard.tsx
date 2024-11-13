@@ -2,6 +2,7 @@ import { FaArrowRight, FaGithub, FaGlobe } from "react-icons/fa6";
 import Card from "../common/card";
 import LinkButton from "./LinkButton";
 import { RxVideo } from "react-icons/rx";
+import NavLinkButton from "./navLinkButton";
 
 interface Props {
     title: string
@@ -36,7 +37,7 @@ export default function ProjectCard({ title, description, youtubeId, skills, sou
                 <div className="inline-flex gap-2 justify-start items-center">
                     {sourceCodeLink && <LinkButton href={sourceCodeLink} label="Source Code" LeftIcon={FaGithub} />}
                     {liveSiteLink && <LinkButton href={liveSiteLink} label="Live Site" LeftIcon={FaGlobe} />}
-                    {learnMoreLink && <LinkButton href={learnMoreLink} target="_self" label="Learn More" RightIcon={FaArrowRight} />}
+                    {learnMoreLink && <NavLinkButton to={learnMoreLink} label="Learn More" RightIcon={FaArrowRight} />}
                 </div>
             </div>
 
