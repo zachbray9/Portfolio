@@ -9,7 +9,7 @@
   
   body {
     @apply 
-    min-h-screen
+    /* min-h-screen */
     mx-auto
     px-8
     max-w-3xl
@@ -19,6 +19,11 @@
     dark:bg-bg-dark 
     text-text-light 
     dark:text-text-dark
+  }
+
+  #root {
+    @apply
+    min-h-screen
   }
 
   h1 {

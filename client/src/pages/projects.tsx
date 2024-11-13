@@ -38,7 +38,7 @@ export default function Projects() {
                         youtubeId="pyLSuHHFSkg"
                         skills={['Unreal Engine']}
                         demoLink="https://youtu.be/pyLSuHHFSkg?si=G3JyBACNAFOzYTST"
-
+                        learnMoreLink="/project-cybernetica"
                     />
 
                     <ProjectCard
@@ -47,7 +47,7 @@ export default function Projects() {
                         youtubeId="gGB6lE-0YYg"
                         skills={['Unity', 'C#']}
                         demoLink="https://youtu.be/gGB6lE-0YYg?si=GJLQE4ehMe3--BI6"
-
+                        learnMoreLink="/gravity-of-silence"
                     />
 
                     <ProjectCard
