@@ -11,7 +11,7 @@ export default function Footer() {
                 <EmailLink email="zachbray9@aol.com" className="text-muted hover:text-black dark:hover:text-white"/>
             </div>
 
-            <p className="mt-8 sm:mt-0 text-muted dark:text-muted-dark text-sm">&copy; 2024 <span className="hover:text-black dark:hover:text-white"><a href="/">zach-bray-portfolio.com</a></span></p>
+            <p className="mt-8 sm:mt-0 text-muted dark:text-muted-dark text-sm">&copy; 2024 <span className="hover:text-black dark:hover:text-white"><a href="/">zachbray.dev</a></span></p>
         </footer>
     )
 }
