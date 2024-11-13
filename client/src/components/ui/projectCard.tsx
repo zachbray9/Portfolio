@@ -1,7 +1,7 @@
 import { FaArrowRight, FaGithub, FaGlobe } from "react-icons/fa6";
 import Card from "../common/card";
 import LinkButton from "./LinkButton";
-import { RxGlobe, RxVideo } from "react-icons/rx";
+import { RxVideo } from "react-icons/rx";
 
 interface Props {
     title: string
