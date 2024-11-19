@@ -3,13 +3,14 @@ import { twMerge } from "tailwind-merge"
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     name: string
+    wrapperClassName?: string
 }
 
-export default function FormInput({ name, className, ...props }: Props) {
+export default function FormInput({ name, wrapperClassName, className, ...props }: Props) {
     const [field, meta] = useField(name)
 
     return (
-        <div className="flex flex-col gap-2">
+        <div className={twMerge("flex flex-col gap-2", wrapperClassName)}>
             <input
                 className={twMerge("px-3 py-1 rounded-md bg-transparent shadow-sm border border-gray-300 dark:border-slate-700 focus:border-black dark:focus:border-white outline-none", className)}
                 {...field}

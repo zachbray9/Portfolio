@@ -9,7 +9,6 @@
   
   body {
     @apply 
-    /* min-h-screen */
     mx-auto
     px-8
     max-w-3xl
