@@ -1,4 +1,4 @@
 export default interface Message {
-    isUser: boolean
+    role: string
     message: string
 }
