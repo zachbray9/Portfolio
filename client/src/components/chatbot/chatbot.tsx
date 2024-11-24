@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RxChevronDown, RxChevronUp, RxPaperPlane } from "react-icons/rx";
 import FormInput from "../form/formInput";
 import Button from "../common/button";
@@ -14,6 +14,30 @@ export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false)
     const [isThinking, setIsThinking] = useState(false)
     const [messages, setMessages] = useState<Message[]>([])
+    const endMessagesRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (endMessagesRef.current) {
+            endMessagesRef.current.scrollIntoView({behavior: 'smooth'})
+        }
+    }, [messages])
+
+    const handleSubmit = async (message: string, resetForm: () => void) => {
+        const newMessage: Message = { role: 'user', message: message }
+        setMessages(prevMessages => [...prevMessages, newMessage])
+        setIsThinking(true)
+
+        await axios.post<Message>(import.meta.env.VITE_API_URL, newMessage)
+            .then(response => {
+                setMessages(prevMessages => [...prevMessages, response.data])
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+        setIsThinking(false)
+        resetForm()
+    }
 
     return (
         <div className="fixed bottom-8 right-8 w-80 rounded-md border bg-bg-light dark:bg-bg-dark dark:border-gray-800">
@@ -34,7 +58,7 @@ export default function Chatbot() {
                     {
                         messages && messages.length > 0 ? (
                             messages.map((message, index) => (
-                                <ChatbotMessage key={index} role={message.role} message={message.message}/>
+                                <ChatbotMessage key={index} role={message.role} message={message.message} />
                             ))
                         ) : (
                             <div className="flex flex-col justify-center items-center gap-2 text-center">
@@ -46,39 +70,26 @@ export default function Chatbot() {
                     }
 
                     {isThinking &&
-                        <div className="flex gap-1 text-xl text-muted">
-                            <Spinner />
+                        <div className="flex justify-center items-center gap-1 text-xs text-muted">
+                            <Spinner size={16} />
                             <span>Thinking...</span>
-                        </div>}
+                        </div>
+                    }
+                    
+                    {/* Reference for the bot to autoscroll when new text is added */}
+                    <div ref={endMessagesRef}></div>
                 </div>
 
                 <div className="border-t dark:border-gray-800 w-full px-2 py-3">
                     <Formik
                         initialValues={{ message: '' }}
-                        onSubmit={async (values, { resetForm }) => {
-                            const newMessage: Message = { role: 'user', message: values.message }
-                            setMessages(prevMessages => [...prevMessages, newMessage])
-                            setIsThinking(true)
-
-                            axios.post<Message>(import.meta.env.VITE_API_URL, newMessage)
-                                .then(response => {
-                                    setMessages(prevMessages => [...prevMessages, response.data])
-                                })
-                                .catch(error => {
-                                    console.log(error)
-                                })
-
-                            setIsThinking(false)
-                            resetForm()
-                        }}
+                        onSubmit={(values, { resetForm }) => handleSubmit(values.message, resetForm)}
                     >
                         {({ handleSubmit, values }) => (
                             <form onSubmit={handleSubmit} className="flex justify-center items-center gap-2 w-full">
                                 <Button
                                     className="border p-2 text-red-500 dark:border-gray-800 disabled:opacity-50 disabled:pointer-events-none"
-                                    onClick={() => {
-                                        setMessages([])
-                                    }}
+                                    onClick={() => setMessages([])}
                                     type="button"
                                     disabled={messages.length === 0}
                                 >
