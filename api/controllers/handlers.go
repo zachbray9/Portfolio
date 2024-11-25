@@ -20,7 +20,7 @@ func RegisterEndpoints(server *gin.Engine) {
 		server.StaticFile("/favicon.ico", "./wwwroot/favicon.ico")
 		server.StaticFile("/site.webmanifest", "./wwwroot/site.webmanifest")
 		server.StaticFile("/ChakraUiLogo.png", "./wwwroot/ChakraUiLogo.png")
-		server.StaticFile("/ZacharyBray-Resume-2024.pdf", "./wwwroot/site.ZacharyBray-Resume-2024.pdf")
+		server.StaticFile("/ZacharyBray-Resume-2024.pdf", "./wwwroot/ZacharyBray-Resume-2024.pdf")
 		server.StaticFile("/Zuko_Pic.jpg", "./wwwroot/Zuko_Pic.jpg")
 
 		server.NoRoute(func (c *gin.Context){
