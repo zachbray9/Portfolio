@@ -12,6 +12,8 @@ func RegisterEndpoints(server *gin.Engine) {
 	if os.Getenv("MODE") == "production" {
 
 		server.Static("/assets", "./wwwroot/assets")
+		server.Static("/gravityOfSilence", "./wwwroot/gravityOfSilence")
+		server.Static("/projectCybernetica", "./wwwroot/projectCybernetica")
 
 		server.StaticFile("/android-chrome-192x192.png", "./wwwroot/android-chrome-192x192.png")
 		server.StaticFile("/apple-touch-icon.png", "./wwwroot/apple-touch-icon.png")	

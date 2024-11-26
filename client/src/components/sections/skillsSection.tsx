@@ -3,7 +3,7 @@ import SkillTag from "../ui/skillTag";
 
 export default function SkillsSection() {
     return (
-        <section id="skills" className="w-full flex flex-col items-start justify-center gap-4">
+        <section className="w-full flex flex-col items-start justify-center gap-4">
             <h3 className="font-semibold text-2xl sm:text-3xl">Skills</h3>
             <div className="flex flex-wrap gap-2">
                 <SkillTag label="React.js" icon={<i className="devicon-react-original colored"></i>} skillType="frontend" />

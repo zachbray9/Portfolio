@@ -1,18 +1,17 @@
 package controllers
 
 import (
-	"bytes"
-	"encoding/json"
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/zachbray9/portfolio/api/models"
-	"github.com/zachbray9/portfolio/api/utils"
+	"github.com/zachbray9/portfolio/api/models/openAIModels"
+	"github.com/zachbray9/portfolio/api/models/requests"
+	"github.com/zachbray9/portfolio/api/models/responses"
+	"github.com/zachbray9/portfolio/api/utils/openAIUtils"
 )
 
 func CallAssistantsApi(context *gin.Context) {
-	var chatRequest models.ChatRequest
+	var chatRequest requests.ChatRequest
 	err := context.ShouldBindJSON(&chatRequest)
 
 	if err != nil {
@@ -20,66 +19,56 @@ func CallAssistantsApi(context *gin.Context) {
 		return
 	}
 
-	url := "https://api.openai.com/v1/chat/completions"
-	apiKey := os.Getenv("OPENAI_API_KEY")
-	prompt := utils.LoadChatbotPrompt()
+	var client *http.Client = &http.Client{}
+	var threadId string
 
-	//serialize the request that will be sent to the openai api
-	requestBody, err := json.Marshal(models.OpenAiApiRequest{
-		Model: "gpt-3.5-turbo",
-		Messages: []models.MessageContent{
-			{Role: "system", Content: prompt},
-			{Role: "user", Content: chatRequest.Message},
-		},
-		Temperature: 1.50,
-		TopP:        1.00,
-	})
+	if(chatRequest.ThreadId == nil) {
+		threadId, err = openAIUtils.CreateThread(client)
+
+		if err != nil {
+			context.JSON(http.StatusInternalServerError, gin.H{"error": "failed to create thread"})
+			return
+		}
+	} else {
+		threadId = *chatRequest.ThreadId
+	}
+
+	err = openAIUtils.AddMessageToThread(chatRequest.Message, threadId, client)
 
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "internal_server_error"})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "failed to add message to thread"})
 		return
 	}
 
-	//create request
-	req, err := http.NewRequest("POST", url, bytes.NewBuffer(requestBody))
+	runId, err := openAIUtils.RunAssistant(threadId, client)
 
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "request_creation_error"})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "there was an issue running the assistant"})
 		return
 	}
 
-	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("Authorization", "Bearer "+apiKey)
+	var status string = ""
+	for status != "completed" {
+		status, err = openAIUtils.CheckRunCompletion(threadId, runId, client)
 
-	//send request
-	client := &http.Client{}
-	res, err := client.Do(req)
+		if err != nil {
+			context.JSON(http.StatusInternalServerError, gin.H{"error": "there was an issue checking the assistant run completion"})
+			return
+		}
+	}
+
+	var assistantMessage openAIModels.Message
+	assistantMessage, err = openAIUtils.GetAssistantResponse(threadId, client)
 
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "internal_server_error"})
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "there was an issue getting the assistant's response"})
 		return
 	}
 
-	defer res.Body.Close()
-
-	var response models.OpenAiApiResponse
-	err = json.NewDecoder(res.Body).Decode(&response)
-
-	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "response_decoding_error"})
-		return
+	var response responses.ChatbotResponse = responses.ChatbotResponse{
+		Role: assistantMessage.Role,
+		Message: assistantMessage.Content[0].Text.Value,
 	}
 
-	//if the openai api doesn't return anything then give a 500 status
-	if len(response.Choices) == 0 {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "no_response_from_ai"})
-		return
-	}
-
-	chatBotMessage := models.ChatbotResponse{
-		Role: "assistant",
-		Message: response.Choices[0].Message.Content,
-	}
-	
-	context.JSON(http.StatusOK, chatBotMessage)
+	context.JSON(http.StatusOK, response)
 }

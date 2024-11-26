@@ -5,7 +5,7 @@ import LinkButton from "../ui/LinkButton";
 
 export default function HeroSection() {
     return (
-        <section id="hero" className="w-full flex flex-col items-start justify-center gap-4">
+        <section className="w-full flex flex-col items-start justify-center gap-4">
             <h1 className="font-bold">Hi, my name is <span className="text-blue-500">Zach Bray</span></h1>
 
             <h4>24 year old Full Stack Software Engineer</h4>
