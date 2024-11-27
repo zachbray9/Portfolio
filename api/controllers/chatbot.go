@@ -7,6 +7,7 @@ import (
 	"github.com/zachbray9/portfolio/api/models/openAIModels"
 	"github.com/zachbray9/portfolio/api/models/requests"
 	"github.com/zachbray9/portfolio/api/models/responses"
+	"github.com/zachbray9/portfolio/api/utils"
 	"github.com/zachbray9/portfolio/api/utils/openAIUtils"
 )
 
@@ -22,6 +23,7 @@ func CallAssistantsApi(context *gin.Context) {
 	var client *http.Client = &http.Client{}
 	var threadId string
 
+	//checks if the request contains a thread id, and if it doesn't then create a new thread
 	if(chatRequest.ThreadId == nil) {
 		threadId, err = openAIUtils.CreateThread(client)
 
@@ -33,6 +35,7 @@ func CallAssistantsApi(context *gin.Context) {
 		threadId = *chatRequest.ThreadId
 	}
 
+	//add users message to thread
 	err = openAIUtils.AddMessageToThread(chatRequest.Message, threadId, client)
 
 	if err != nil {
@@ -40,6 +43,7 @@ func CallAssistantsApi(context *gin.Context) {
 		return
 	}
 
+	//run the openai assistant
 	runId, err := openAIUtils.RunAssistant(threadId, client)
 
 	if err != nil {
@@ -47,6 +51,7 @@ func CallAssistantsApi(context *gin.Context) {
 		return
 	}
 
+	//keep checking if the run has completed and escape only when it does
 	var status string = ""
 	for status != "completed" {
 		status, err = openAIUtils.CheckRunCompletion(threadId, runId, client)
@@ -65,9 +70,13 @@ func CallAssistantsApi(context *gin.Context) {
 		return
 	}
 
+	//remove citations from openai response
+	cleanedResponse := utils.RemoveCitations(assistantMessage.Content[0].Text.Value)
+
 	var response responses.ChatbotResponse = responses.ChatbotResponse{
+		ThreadId: threadId,
 		Role: assistantMessage.Role,
-		Message: assistantMessage.Content[0].Text.Value,
+		Message: cleanedResponse,
 	}
 
 	context.JSON(http.StatusOK, response)

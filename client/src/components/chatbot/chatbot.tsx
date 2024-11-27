@@ -13,6 +13,7 @@ import ChatbotMessage from "./chatbotMessage";
 export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false)
     const [isThinking, setIsThinking] = useState(false)
+    const [threadId, setThreadId] = useState<string | null>(null)
     const [messages, setMessages] = useState<Message[]>([])
     const endMessagesRef = useRef<HTMLDivElement>(null)
 
@@ -23,12 +24,13 @@ export default function Chatbot() {
     }, [messages])
 
     const handleSubmit = async (message: string, resetForm: () => void) => {
-        const newMessage: Message = { role: 'user', message: message }
+        const newMessage: Message = { threadId: threadId, role: 'user', message: message }
         setMessages(prevMessages => [...prevMessages, newMessage])
         setIsThinking(true)
 
         await axios.post<Message>(import.meta.env.VITE_API_URL, newMessage)
             .then(response => {
+                setThreadId(response.data.threadId)
                 setMessages(prevMessages => [...prevMessages, response.data])
             })
             .catch(error => {
@@ -37,6 +39,11 @@ export default function Chatbot() {
 
         setIsThinking(false)
         resetForm()
+    }
+
+    const clearThread = () => {
+        setMessages([])
+        setThreadId(null)
     }
 
     return (
@@ -54,7 +61,7 @@ export default function Chatbot() {
             </button>
 
             <div className={`flex flex-col justify-between overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "h-96 opacity-100" : "h-0 opacity-0"}`} aria-hidden={!isOpen}>
-                <div className="flex flex-col gap-4 overflow-y-auto p-3">
+                <div className="flex flex-col gap-4 overflow-y-auto overflow-x-hidden p-3">
                     {
                         messages && messages.length > 0 ? (
                             messages.map((message, index) => (
@@ -89,7 +96,7 @@ export default function Chatbot() {
                             <form onSubmit={handleSubmit} className="flex justify-center items-center gap-2 w-full">
                                 <Button
                                     className="border p-2 text-red-500 dark:border-gray-800 disabled:opacity-50 disabled:pointer-events-none"
-                                    onClick={() => setMessages([])}
+                                    onClick={clearThread}
                                     type="button"
                                     disabled={messages.length === 0}
                                 >
@@ -100,7 +107,7 @@ export default function Chatbot() {
 
                                 <Button
                                     className="border p-2 bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 disabled:opacity-50 disabled:pointer-events-none transition-colors"
-                                    disabled={!values.message}
+                                    disabled={!values.message || isThinking}
                                     type="submit"
                                 >
                                     <RxPaperPlane />
