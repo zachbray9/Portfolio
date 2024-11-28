@@ -60,7 +60,7 @@ export default function Chatbot() {
                 {!isOpen ? <RxChevronUp /> : <RxChevronDown />}
             </button>
 
-            <div className={`flex flex-col justify-between overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "h-96 opacity-100" : "h-0 opacity-0"}`} aria-hidden={!isOpen}>
+            <div className={`flex flex-col justify-between overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "h-80 sm:h-96 opacity-100" : "h-0 opacity-0"}`} aria-hidden={!isOpen}>
                 <div className="flex flex-col gap-4 overflow-y-auto overflow-x-hidden p-3">
                     {
                         messages && messages.length > 0 ? (
