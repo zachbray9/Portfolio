@@ -3,7 +3,7 @@ import UCFLogo from '../../assets/UCF Logo.png'
 
 export default function EducationSection() {
     return (
-        <section id="education" className="w-full flex flex-col gap-4">
+        <section className="w-full flex flex-col gap-4">
             <h3 className="font-semibold text-2xl sm:text-3xl">Education</h3>
 
             <Card>

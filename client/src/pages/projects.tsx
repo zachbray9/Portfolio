@@ -8,7 +8,7 @@ export default function Projects() {
                 <title>Projects - Zach's Portfolio</title>
             </Helmet>
 
-            <div className="flex flex-col gap-8">
+            <div id="projects" className="flex flex-col gap-8">
                 <h3 className="font-bold">All Projects</h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

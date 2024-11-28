@@ -1,6 +1,6 @@
-package models
+package requests
 
-type MessageContent struct {
+type AddMessageToThreadRequest struct {
 	Role    string `json:"role"`
 	Content string `json:"content"`
 }

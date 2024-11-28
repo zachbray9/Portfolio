@@ -4,7 +4,7 @@ import ProjectCard from "../ui/projectCard";
 
 export default function ProjectsSection() {
     return (
-        <section id="projects" className="flex flex-col gap-4">
+        <section className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
                 <h3 className="font-semibold text-2xl sm:text-3xl">Featured Projects</h3>
                 <NavLink to='/projects' className='text-muted hover:text-black dark:hover:text-white flex items-center gap-1 transition-colors'>

@@ -50,4 +50,9 @@
   h6 {
     @apply text-lg
   }
+
+  .chat-message a {
+    @apply
+    underline
+  }
 }
