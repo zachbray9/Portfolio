@@ -5,10 +5,10 @@ import Button from "../common/button";
 import { Formik } from "formik";
 import { FiTrash } from "react-icons/fi";
 import Message from "../../models/message";
-import { GoDependabot } from "react-icons/go";
 import axios from "axios";
 import Spinner from "../common/spinner";
 import ChatbotMessage from "./chatbotMessage";
+import { RiRobot2Line } from "react-icons/ri";
 
 export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false)
@@ -53,7 +53,7 @@ export default function Chatbot() {
                     <p className="text-xs font-semibold">Chat with</p>
                     <div className="flex items-center gap-2">
                         <span className="size-2 bg-emerald-500 rounded-full animate-pulse" />
-                        <p className="text-sm font-semibold">Zach Support</p>
+                        <p className="text-sm font-semibold">ZachBot</p>
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@ export default function Chatbot() {
                             ))
                         ) : (
                             <div className="flex flex-col justify-center items-center gap-2 text-center">
-                                <GoDependabot size={20} />
+                                <RiRobot2Line size={20} />
                                 <p>Send a message to start the chat!</p>
                                 <p className="text-sm text-muted">You can ask the bot anything about me and it will help to find the answer!</p>
                             </div>

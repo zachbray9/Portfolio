@@ -11,7 +11,7 @@ export default function HeroSection() {
 
             <h4>24 year old Full Stack Software Engineer</h4>
 
-            <p className="font-light">I like to learn about modern web dev technology, play volleyball, and get coding advice from my cat, <span><a href="/Zuko_Pic.jpg" target="_blank" className="font-semibold hover:underline hover:text-muted">Zuko</a></span>.</p>
+            <p className="font-light">I like to learn about modern web dev technology, play volleyball, and watch TV with my cat, <span><a href="/Zuko_Pic.jpg" target="_blank" className="font-semibold hover:underline hover:text-muted">Zuko</a></span>.</p>
             
             <div className="flex items-center gap-2 font-semibold">
                 <p>Ask the chatbot anything about me</p>
