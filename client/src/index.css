@@ -9,6 +9,7 @@
   
   body {
     @apply 
+    antialiased
     mx-auto
     px-8
     max-w-3xl
