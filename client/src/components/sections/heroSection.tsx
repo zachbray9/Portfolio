@@ -20,7 +20,7 @@ export default function HeroSection() {
 
             <div className="flex gap-4 items-center justify-start" >
                 <LinkButton
-                    href='/ZacharyBray-Resume-2024.pdf'
+                    href='/ZacharyBray-Resume.pdf'
                     label="Download CV"
                     RightIcon={FaFileArrowDown}
                     className="bg-bg-light dark:bg-bg-dark hover:bg-slate-200 dark:hover:bg-gray-800 text-black dark:text-white text-sm p-2 border border-slate-300 dark:border-gray-800 ring-0"
