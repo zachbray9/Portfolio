@@ -1,5 +1,6 @@
 import { RiRobot2Line } from "react-icons/ri"
 import Markdown, { Components } from "react-markdown"
+import { NavLink } from "react-router-dom"
 import remarkGfm from "remark-gfm"
 
 interface Props {
@@ -11,7 +12,26 @@ const componentOverrides: Partial<Components> = {
     h1: (...props) => <h1 className="font-bold text-xl" {...props}/>,
     h2: (...props) => <h2 className="font-semibold text-lg" {...props}/>,
     h3: (...props) => <h3 className="font-medium text-base" {...props}/>,
-    h4: (...props) => <h4 className="font-medium text-sm" {...props}/>
+    h4: (...props) => <h4 className="font-medium text-sm" {...props}/>,
+    a: ({href, children, ...props}) => {
+        const isInternalLink = href && (href.startsWith('/') || href.startsWith(window.location.origin))
+
+        if(isInternalLink) {
+            const internalPath = href.replace(window.location.origin, '')
+
+            return (
+                <NavLink to={internalPath} className="text-blue-500 underline" {...props}>
+                    {children}
+                </NavLink>
+            )
+        }
+
+        return (
+            <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline" {...props}>
+                {children}
+            </a>
+        )
+    }
 }
 
 export default function ChatbotMessage({ role, message }: Props) {
