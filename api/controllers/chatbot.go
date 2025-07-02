@@ -7,8 +7,9 @@ import (
 	"github.com/zachbray9/portfolio/api/models/openAIModels"
 	"github.com/zachbray9/portfolio/api/models/requests"
 	"github.com/zachbray9/portfolio/api/models/responses"
-	"github.com/zachbray9/portfolio/api/utils"
+	"github.com/zachbray9/portfolio/api/utils/commonUtils"
 	"github.com/zachbray9/portfolio/api/utils/openAIUtils"
+	"github.com/zachbray9/portfolio/api/utils/supabaseUtils"
 )
 
 func CallAssistantsApi(context *gin.Context) {
@@ -21,9 +22,32 @@ func CallAssistantsApi(context *gin.Context) {
 	}
 
 	var client *http.Client = &http.Client{}
-	var threadId string
 
+	//connect to vector database in supabase
+	db, err := supabaseUtils.ConnectToSupabaseDb()
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "failed to connect to database"})
+		return
+	}
+
+	//generate an embedding for the message sent in the request
+	embedding, err := openAIUtils.CreateEmbedding(chatRequest.Message, client)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "failed to create embedding for user message"})
+		return
+	}
+
+	relevantInfo, err := supabaseUtils.FindRelevantInfo(embedding, db)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "failed to query the database"})
+		return
+	}
+
+	//creates a prompt for llm based on retrieved info
+	prompt := commonUtils.CreatePrompt(chatRequest.Message, relevantInfo)
+	
 	//checks if the request contains a thread id, and if it doesn't then create a new thread
+	var threadId string
 	if(chatRequest.ThreadId == nil) {
 		threadId, err = openAIUtils.CreateThread(client)
 
@@ -36,7 +60,7 @@ func CallAssistantsApi(context *gin.Context) {
 	}
 
 	//add users message to thread
-	err = openAIUtils.AddMessageToThread(chatRequest.Message, threadId, client)
+	err = openAIUtils.AddMessageToThread(prompt, threadId, client)
 
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": "failed to add message to thread"})
@@ -70,13 +94,10 @@ func CallAssistantsApi(context *gin.Context) {
 		return
 	}
 
-	//remove citations from openai response
-	cleanedResponse := utils.RemoveCitations(assistantMessage.Content[0].Text.Value)
-
 	var response responses.ChatbotResponse = responses.ChatbotResponse{
 		ThreadId: threadId,
 		Role: assistantMessage.Role,
-		Message: cleanedResponse,
+		Message: assistantMessage.Content[0].Text.Value,
 	}
 
 	context.JSON(http.StatusOK, response)
