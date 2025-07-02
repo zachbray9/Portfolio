@@ -13,6 +13,8 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/joho/godotenv"
 )
 
 const (
@@ -23,6 +25,12 @@ const (
 )
 
 func main() {
+	//initalize env variables
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("error loading env file: %v", err)
+	}
+
 	files, err := filepath.Glob(filepath.Join(chunksDirectory, "*.txt"))
 
 	if err != nil {
@@ -34,25 +42,25 @@ func main() {
 	}
 
 	for _, file := range files {
-		fmt.Printf("Processing file: %s", file)
+		fmt.Printf("Processing file: %s\n\n", file)
 
 		content, err := readFile(file)
 		if err != nil {
-			log.Printf("Failed to read %s: %v", file, err)
+			log.Printf("Failed to read %s: %v\n\n", file, err)
 			continue
 		}
 
 		embedding, err := createEmbedding(content)
 		if err != nil {
-			log.Printf("Failed to create embedding for %s: %v", file, err)
+			log.Printf("Failed to create embedding for %s: %v\n\n", file, err)
 		}
 
 		err = insertDocument(content, embedding)
 		if err != nil {
-			log.Printf("Failed to insert document for %s: %v", file, err)
+			log.Printf("Failed to insert document for %s: %v\n\n", file, err)
 		}
 
-		fmt.Printf("Successfully processed %s\n", file)
+		fmt.Printf("Successfully processed %s\n\n", file)
 	}
 }
 
@@ -132,6 +140,7 @@ func insertDocument(content string, embedding []float32) error {
 		return err
 	}
 
+	req.Header.Set("apikey", os.Getenv("SUPABASE_API_KEY"))
 	req.Header.Set("Authorization", os.Getenv("SUPABASE_API_KEY"))
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Prefer", "return=representation")
@@ -147,7 +156,7 @@ func insertDocument(content string, embedding []float32) error {
 
 	if res.StatusCode != 200 && res.StatusCode != 201 {
 		resBody, _ := io.ReadAll(res.Body)
-		return fmt.Errorf("Supabase insert error: %s", string(resBody))
+		return fmt.Errorf("supabase insert error: %s", string(resBody))
 	}
 
 	return nil

@@ -1,0 +1,4 @@
+AgilePro is a project management web app that helps development teams collaboratively manage their workflows. Users can create and assign tickets, monitor ticket status and priority, and communicate in real time, making the development process more streamlined and organized. Zach built the frontend using React with TypeScript, Chakra UI for styling, and MobX for state management. The backend was developed in C# using .NET 6 with Entity Framework, and data is stored in a SQL Server database hosted via Azure SQL. The entire application is deployed using an Azure App Service.
+
+Live site: https://agilepro.azurewebsites.net  
+GitHub repository: https://github.com/zachbray9/Bug-Tracker

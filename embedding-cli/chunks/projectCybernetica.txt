@@ -1,0 +1,7 @@
+Project Cybernetica is a 3D first-person shooter created in Unreal Engine 5. Players take on the role of a mercenary infiltrating an apocalyptic weapons development city called Sariya, which mysteriously went dark and lost all contact with the outside world. The mission is to uncover the secrets hidden within the city.
+
+The game was developed as part of Zach’s UCF Game Workshop class by a small team consisting of 3 programmers (including Zach), 4 designers, and 4 artists. Development was done using Unreal Engine 5 and Blueprints for visual scripting.
+
+Zach’s contributions to the project included implementing automated performance testing systems, designing and programming an invisibility cloak gameplay mechanic, and creating an advanced strafe behavior for enemy AI during combat.
+
+You can learn more about Project Cybernetica on Zach’s portfolio site: https://www.zachbray.dev/project-cybernetica

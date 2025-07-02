@@ -1,0 +1,4 @@
+MyAnimeVault is an interactive web app that leverages the AniList API to let users explore, rate, and track their favorite anime series. Registered users can create anime lists, manage their watch progress, and organize their anime journey through a clean and responsive interface. Zach built the frontend using React with TypeScript, Chakra UI for styling, and MobX for state management. The backend was built in Go using the Gin framework to handle API requests, and the data is stored in a PostgreSQL database. The entire project is hosted on Render.com.
+
+Live site: https://myanimevault.onrender.com  
+GitHub repository: https://github.com/zachbray9/MyAnimeVault

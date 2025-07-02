@@ -1,0 +1,7 @@
+Zach worked as a freelance frontend developer for the National Space Society, where he built a fast and scalable website to celebrate the 100th anniversary of rocket pioneer Robert Goddard. The site hosted a worldwide contest with over 5,000 participants.
+
+Using ReactJS, Tailwind CSS, and ShadCn, Zach designed an intuitive and visually appealing user interface that boosted user engagement by 30% thanks to improved navigation and responsiveness.
+
+He worked closely with the National Space Society team to understand their goals and make sure the website reflected their vision.
+
+Live site: https://www.goddard100.org

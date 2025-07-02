@@ -1,0 +1,5 @@
+The Gravity of Silence is a third-person puzzle-solving game where the player must use gravity-altering abilities to complete levels and regain control of their spaceship from a rogue AI. Players manipulate the gravity field in real time to overcome platforming challenges and environmental obstacles as they progress through increasingly complex levels.
+
+The game was developed by a small team as part of Zach’s UCF Game Production class. The team included one programmer (Zach), two designers, and three artists. Zach was responsible for all programming in the game, which was built using Unity and C#.
+
+You can learn more about The Gravity of Silence on Zach’s portfolio site: https://www.zachbray.dev/gravity-of-silence

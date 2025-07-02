@@ -1,0 +1,25 @@
+Zach is a full-stack software engineer with experience in both frontend and backend technologies.
+
+Frontend:
+- ReactJS (with TypeScript)
+- Tailwind CSS
+- Chakra UI
+- ShadCn
+- MobX
+
+Backend:
+- Go (with Gin framework)
+- C# (.NET 6 with Entity Framework)
+- PostgreSQL
+- SQL Server
+
+Other Tools & Tech:
+- Microsoft Azure
+- Supabase
+- pgvector
+- OpenAI API (LLMs and embeddings)
+- WPF
+- Unreal Engine 5 (Blueprints)
+- Unity (C#)
+
+Zach enjoys exploring new tools and frameworks, and is always open to learning new technologies that support creative and scalable development.

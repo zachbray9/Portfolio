@@ -1,0 +1,7 @@
+Zork Builder is a tool-based project Zach developed for his Tools Development class at UCF. As part of the assignment, he and his team recreated the classic text-based adventure game Zork from scratch, and then built a world-building tool that enables users to create custom game environments.
+
+The tool provides a user-friendly interface for modifying the game’s JSON world files, allowing even non-technical users to design their own Zork-style adventures. Users can create and connect rooms, add items, and define game logic without directly editing code. The game reads the JSON file at runtime to generate the world dynamically.
+
+The project was built using C# and Windows Presentation Foundation (WPF) to deliver a desktop interface. Zach was responsible for building both the game engine and the interactive tool.
+
+GitHub repository: https://github.com/zachbray9/Zork

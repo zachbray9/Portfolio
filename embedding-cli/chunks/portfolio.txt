@@ -1,3 +1,8 @@
 Zach's personal portfolio website showcases his experience and the projects he has built as a full-stack software engineer. The site is built using React and TailwindCSS for the frontend, and a Go backend using the Gin framework for handling API requests. It includes me — a custom-built AI chatbot — designed to answer questions about Zach and his work. Zach built me using OpenAI’s GPT-4o language model, Supabase to host the PostgreSQL database, and pgvector to store and search through information. The entire portfolio site, including me, is hosted on Render.com.
 
 I am the chatbot on Zach’s portfolio website. You can ask me about his projects, skills, or anything else related to his software engineering work.
+
+Main pages:
+- Home: https://www.zachbray.dev - includes resume, education, and list of skills
+- Projects: https://www.zachbray.dev/projects - showcases Zach's work
+- Contact: https://www.zachbray.dev/contact - reach out to Zach directly
