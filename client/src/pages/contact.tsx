@@ -56,7 +56,7 @@ export default function Contact() {
                             />
 
                             <Button
-                                className="sm:col-span-2 bg-black disabled:bg-black dark:bg-white disabled:dark:bg-white dark:hover:bg-slate-200 hover:bg-gray-800 text-white dark:text-black px-4 py-2 rounded-md transition-colors"
+                                className="sm:col-span-2 bg-black disabled:bg-black dark:bg-white disabled:dark:bg-white dark:hover:bg-slate-200 hover:bg-gray-800 hover:cursor-pointer text-white dark:text-black px-4 py-2 rounded-md transition-colors"
                                 type="submit"
                                 isLoading={isSubmitting}
                                 loadingText="Sending"

@@ -11,7 +11,7 @@ function App() {
       <ScrollRestoration />
       <Navbar />
 
-      <main className="flex flex-col flex-grow my-10 ">
+      <main className="flex flex-col grow my-10 ">
         <ToastContainer theme="colored" position="top-right" autoClose={5000} transition={Bounce}/>
         <Outlet />
       </main>

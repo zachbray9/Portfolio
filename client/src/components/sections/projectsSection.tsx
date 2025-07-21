@@ -7,7 +7,7 @@ export default function ProjectsSection() {
         <section className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
                 <h3 className="font-semibold text-2xl sm:text-3xl">Featured Projects</h3>
-                <NavLink to='/projects' className='text-muted hover:text-black dark:hover:text-white flex items-center gap-1 transition-colors'>
+                <NavLink to='/projects' className='text-muted-light hover:text-black dark:hover:text-white flex items-center gap-1 transition-colors'>
                     <p>view more</p>
                     <FaArrowRight />
                 </NavLink>

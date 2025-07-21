@@ -31,7 +31,7 @@ export default function ProjectCard({ title, description, youtubeId, skills, sou
             <div className="flex flex-col h-full justify-between gap-4">
                 <div className="flex flex-wrap gap-2 ">
                     {skills.map(skill => (
-                        <div key={skill} className="flex justify-center items-center px-2 py-1 rounded-md text-[10px] font-semibold bg-secondary dark:bg-secondary-dark" >{skill}</div>
+                        <div key={skill} className="flex justify-center items-center px-2 py-1 rounded-md text-[10px] font-semibold bg-surface-light dark:bg-surface-dark" >{skill}</div>
                     ))}
                 </div>
                 <div className="inline-flex gap-2 justify-start items-center">
