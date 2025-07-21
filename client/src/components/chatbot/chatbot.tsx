@@ -44,7 +44,7 @@ export default function Chatbot() {
                     }
 
                     {isThinking &&
-                        <div className="flex justify-center items-center gap-1 text-xs text-muted">
+                        <div className="flex justify-center items-center gap-1 text-xs text-muted-light dark:text-muted-dark">
                             <Spinner size={16} />
                             <span>Thinking...</span>
                         </div>
