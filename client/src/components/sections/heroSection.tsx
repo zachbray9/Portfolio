@@ -25,9 +25,9 @@ export default function HeroSection() {
                     RightIcon={FaFileArrowDown}
                     className="bg-bg-light dark:bg-bg-dark hover:bg-slate-200 dark:hover:bg-gray-800 text-black dark:text-white text-sm p-2 border border-slate-300 dark:border-gray-800 ring-0"
                 />
-                <SocialLink Icon={FaGithub} url="https://github.com/zachbray9" className="text-muted hover:text-black dark:hover:text-white" />
-                <SocialLink Icon={FaLinkedin} url="https://linkedin.com/in/zach-bray" className="text-muted hover:text-black dark:hover:text-white" />
-                <EmailLink email="zachbray9@aol.com" className="text-muted hover:text-black dark:hover:text-white" />
+                <SocialLink Icon={FaGithub} url="https://github.com/zachbray9" className="text-muted-light dark:text-muted-dark hover:text-black dark:hover:text-white" />
+                <SocialLink Icon={FaLinkedin} url="https://linkedin.com/in/zach-bray" className="text-muted-light dark:text-muted-dark hover:text-black dark:hover:text-white" />
+                <EmailLink email="zachbray9@aol.com" className="text-muted-light dark:text-muted-dark hover:text-black dark:hover:text-white" />
             </div>
         </section>
     )

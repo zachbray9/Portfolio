@@ -7,13 +7,13 @@ export default function EducationSection() {
             <h3 className="font-semibold text-2xl sm:text-3xl">Education</h3>
 
             <Card>
-                <ul className="mx-10 border-l dark:border-gray-800">
+                <ul className="mx-10 border-l border-gray-200 dark:border-gray-800">
                     <li className="relative ml-10 py-4 flex flex-col gap-2">
                         <div className="absolute -left-16 top-4 bg-black h-12 w-12 rounded-full flex items-center justify-center">
                             <img src={UCFLogo} />
                         </div>
 
-                        <time className="text-xs text-muted dark:text-muted-dark">
+                        <time className="text-xs text-muted-light dark:text-muted-dark">
                             <span>August 2018</span>
                             <span> - </span>
                             <span>May 2022</span>
@@ -21,7 +21,7 @@ export default function EducationSection() {
 
                         <h5>University of Central Florida</h5>
 
-                        <p className="text-muted dark:text-muted-dark">BA in Digital Media on the Programming Path</p>
+                        <p className="text-muted-light dark:text-muted-dark">BA in Digital Media on the Programming Path</p>
 
                         <ul className="ml-5 list-disc list-outside">
                             <li>
