@@ -14,7 +14,7 @@ export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <div className="fixed bottom-8 right-8 w-80 rounded-md border bg-bg-light dark:bg-bg-dark dark:border-gray-800">
+        <div className="fixed bottom-8 right-8 w-80 rounded-md border bg-bg-light dark:bg-background dark:border-gray-800">
             <button className="flex items-center justify-between px-6 py-3 w-full border-b dark:border-gray-800 hover:underline" onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen}>
                 <div className="flex flex-col items-start">
                     <p className="text-xs font-semibold">Chat with</p>
@@ -38,7 +38,7 @@ export default function Chatbot() {
                             <div className="flex flex-col justify-center items-center gap-2 text-center">
                                 <RiRobot2Line size={20} />
                                 <p>Send a message to start the chat!</p>
-                                <p className="text-sm text-muted">You can ask the bot anything about me and it will help to find the answer!</p>
+                                <p className="text-sm text-muted-light dark:text-muted-dark">You can ask the bot anything about me and it will help to find the answer!</p>
                             </div>
                         )
                     }

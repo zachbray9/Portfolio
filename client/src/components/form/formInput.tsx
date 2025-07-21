@@ -12,7 +12,7 @@ export default function FormInput({ name, wrapperClassName, className, ...props 
     return (
         <div className={twMerge("flex flex-col gap-2", wrapperClassName)}>
             <input
-                className={twMerge("px-3 py-1 rounded-md bg-transparent shadow-sm border border-gray-300 dark:border-slate-700 focus:border-black dark:focus:border-white outline-none", className)}
+                className={twMerge("px-3 py-1 rounded-md bg-transparent shadow-sm placeholder:text-muted-light dark:placeholder:text-muted-dark border border-gray-300 dark:border-slate-700 focus:border-black dark:focus:border-white outline-none", className)}
                 {...field}
                 name={name}
                 {...props}
