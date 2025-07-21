@@ -2,6 +2,8 @@ import Card from "../common/card";
 import UCFLogo from '../../assets/UCF Logo.png'
 import NSSLogo from '../../assets/NSSLogo.png'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import LinkButton from "../ui/LinkButton";
+import { FaGlobe } from "react-icons/fa6";
 
 export default function EducationSection() {
     return (
@@ -41,6 +43,8 @@ export default function EducationSection() {
                                         <p>Coordinated directly with key members of the National Space Society to gather contest requirements, ensuring the website effectively supported their vision and goals.</p>
                                     </li>
                                 </ul>
+
+                                <LinkButton href="https://www.goddard100.org" label="Live Site" LeftIcon={FaGlobe} className="w-fit"/>
                             </li>
                         </ul>
                     </Card>
