@@ -1,6 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg-light: #fafafa;
+  --color-bg-dark: #121212;
+
+  --color-secondary: #e5e5e5;
+  --color-secondary-dark: #1e1e1e;
+  
+  --color-text-light: #333333;
+  --color-text-dark: #ffffff;
+
+  --color-muted-light: #6B7280;
+  --color-muted-dark: #A1A1AA
+}
 
 @layer base{
   html {
@@ -15,7 +29,7 @@
     max-w-3xl
     flex
     flex-col
-    bg-bg-light 
+    bg-bg-light
     dark:bg-bg-dark 
     text-text-light 
     dark:text-text-dark
