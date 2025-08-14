@@ -13,12 +13,12 @@ export default function Projects() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <ProjectCard
-                        title="MyAnimeVault"
+                        title="PlotArmor"
                         description="Web app that allows users to curate anime lists and manage their watch progress, providing a seamless interface to organize and enjoy their anime journey."
                         youtubeId="tl8NMqteznU"
                         skills={['React.js', 'TypeScript', 'Chakra UI', 'MobX', 'Golang', 'PostgresSQL', 'Render']}
-                        sourceCodeLink="https://github.com/zachbray9/myanimevault"
-                        liveSiteLink="https://myanimevault.onrender.com"
+                        sourceCodeLink="https://github.com/zachbray9/PlotArmor"
+                        liveSiteLink="https://www.plotarmor.site"
                         demoLink="https://youtu.be/tl8NMqteznU?si=kxNChp1eT34s2m9S"
                     />
 
